@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableHighlight, View, StatusBar, Alert } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View, StatusBar } from 'react-native';
 
 export default class StartScreen extends Component {
   static navigationOptions = {

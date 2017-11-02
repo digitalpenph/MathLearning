@@ -1,54 +1,32 @@
 import React, { Component } from 'react';
-import { Text, TextInput, ScrollView, View, StyleSheet, TouchableHighlight, StatusBar, Alert } from 'react-native';
+import { StyleSheet, Text, TouchableHighlight, View, StatusBar } from 'react-native';
 
-export default class App extends Component {
+export default class ActivityScreen extends Component {
   static navigationOptions = {
-    title: 'Activity',
+    title: 'Choose Dificulty',
     headerStyle: { backgroundColor: '#006A40' },
     headerTitleStyle: { color: '#FFFFFF' },
   };
-  onChanged(text){
-    let newText = '';
-    let numbers = '0123456789';
-    for (var i=0; i < text.length; i++) {
-      if(numbers.indexOf(text[i]) > -1 ) {
-        newText = newText + text[i];
-      } else {
-        // your call back function
-        alert("please enter numbers only");
-      }
-      this.setState({ myNumber: newText });
-    }
-  }
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
         <StatusBar hidden={true} />
-        <View style={styles.title}>
-          <Text style={{fontSize: 24, fontWeight: 'bold', color: '#34495e'}}>Question 1/10</Text>
-        </View>
-        <View style={styles.question}>
-          <ScrollView>
-          <Text style={styles.content}>When you multiply prime numbers together the answer is always an odd number.</Text>
-          <Text style={styles.content}>Give an example to show Betty is wrong.</Text>
-          </ScrollView>
-        </View>
-        <View style={styles.answer}>
-          <Text style={{color: '#34495e'}}>ANSWER:</Text>
-          <TextInput 
-            style={{width: 200}}
-            keyboardType = 'numeric'
-            onChangeText = {(text)=> this.onChanged(text)}
-            maxLength = {10}  //setting limit of input
-          />
-        </View>
-        <View style={styles.nav}>
-	  <TouchableHighlight onPress={() => { Alert.alert('You submitted your answer!')}} underlayColor='#ecf0f1'>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>SUBMIT ANSWER</Text>
-            </View>
-          </TouchableHighlight>
-        </View>
+        <TouchableHighlight onPress={() => navigate('Question')} underlayColor='#FFFFFF'>
+          <View style={styles.button}>
+            <Text style={styles.buttonText}>EASY</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight disabled={true} onPress={() => navigate('Question')} underlayColor='#FFFFFF'>
+          <View style={styles.button_disabled}>
+            <Text style={styles.buttonText}>MODERATE</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight disabled={true} onPress={() => navigate('Question')} underlayColor='#FFFFFF'>
+          <View style={styles.button_disabled}>
+            <Text style={styles.buttonText}>HARD</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -57,40 +35,29 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#FFFFFF'
-  },
-  title: {
-    padding: 14,
-    backgroundColor: '#ecf0f1'
-  },
-  question: {
-    flex: 1,
-    padding: 14,
-  },
-  answer: {
+    justifyContent: 'center',
     alignItems: 'center',
-    padding: 14,
-  },
-  content: {
-    fontSize:18,
-    paddingTop: 20,
-    color: '#34495e'
-  },
-  nav: {
-    padding: 14,
-    backgroundColor: '#ecf0f1'
+    backgroundColor: '#FFFFFF'
   },
   button: {
     borderRadius: 50,
+    marginBottom: 30,
+    width: 200,
     alignItems: 'center',
     backgroundColor: '#006A40'
   },
+  button_disabled: {
+    borderRadius: 50,
+    marginBottom: 30,
+    width: 200,
+    alignItems: 'center',
+    backgroundColor: '#ecf0f1'
+  },
   buttonText: {
-    padding: 5,
+    padding: 15,
     color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
   }
-});
+})
 
