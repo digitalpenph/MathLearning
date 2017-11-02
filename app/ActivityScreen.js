@@ -5,7 +5,7 @@ export default class App extends Component {
   static navigationOptions = {
     title: 'Activity',
     headerStyle: { backgroundColor: '#006A40' },
-    headerTitleStyle: { color: '#F0A40E' },
+    headerTitleStyle: { color: '#FFFFFF' },
   };
   onChanged(text){
     let newText = '';
@@ -43,7 +43,7 @@ export default class App extends Component {
           />
         </View>
         <View style={styles.nav}>
-	  <TouchableHighlight onPress={() => { Alert.alert('You submitted your answer!')}} underlayColor='#FFFFFF'>
+	  <TouchableHighlight onPress={() => { Alert.alert('You submitted your answer!')}} underlayColor='#ecf0f1'>
             <View style={styles.button}>
               <Text style={styles.buttonText}>SUBMIT ANSWER</Text>
             </View>
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     padding: 5,
-    color: '#F0A40E',
+    color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
   }

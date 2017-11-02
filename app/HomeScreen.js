@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View, StatusBar } from 'react-native';
-import { Constants } from 'expo';
 
 export default class HomeScreen extends Component {
   static navigationOptions = {
     title: 'Math Learning',
     headerStyle: { backgroundColor: '#006A40' },
-    headerTitleStyle: { color: '#F0A40E' },
+    headerTitleStyle: { color: '#FFFFFF' },
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     padding: 15,
-    color: '#F0A40E',
+    color: '#FFFFFF',
     fontSize: 18,
     fontWeight: 'bold',
   }

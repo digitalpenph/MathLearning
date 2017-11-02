@@ -5,7 +5,7 @@ export default class AboutScreen extends Component {
   static navigationOptions = {
     title: 'About',
     headerStyle: { backgroundColor: '#006A40' },
-    headerTitleStyle: { color: '#F0A40E' },
+    headerTitleStyle: { color: '#FFFFFF' },
   };
   render() {
     return (
