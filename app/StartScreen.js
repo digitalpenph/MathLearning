@@ -12,6 +12,7 @@ export default class StartScreen extends Component {
     return (
       <View style={styles.container}>
         <StatusBar hidden={true} />
+	<Lessons />
         <TouchableHighlight onPress={() => navigate('Lesson')} underlayColor='#FFFFFF'>
           <View style={styles.button}>
             <Text style={styles.buttonText}>LESSON 1</Text>
