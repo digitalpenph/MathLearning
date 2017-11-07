@@ -1,72 +1,11 @@
 import React, { Component } from 'react';
+import { AsyncStorage } from 'react-native';
 import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.13
-/*import { SQLite } from 'expo';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
-import { Constants } from 'expo';
-
-const db = SQLite.openDatabase({ name: 'chinook.db' });
-
-export default class Lessons extends Component {
-  state = {
-    lessons: null,
-  };
-
-  componentDidMount() {
-    db.transaction(tx => {
-      tx.executeSql(
-        'create table if not exists lessons (id integer primary key not null, name text, content text);'
-      );
-});
-    this.add("Lesson 1", "the quick brown fox");
-  }
-
-  add(name, content) {
-    db.transaction(
-      tx => {
-        tx.executeSql('insert into lessons (name, content) values (?, ?)', [name, content]);
-        tx.executeSql('select * from lessons', [], (_, { rows: { _array } }) => this.setState({ lessons: _array })
-        );
-      },
-      null,
-      this.update
-    );
-}
-
-  render() {
-    const { lessons } = this.state;
-    return (
-      <View style={styles.container}>
-            <Text>Sample</Text>
-        {lessons.map(({ id, name, content }) => (
-          <TouchableOpacity
-            key={id}
-            onPress={() => this.props.onPressItem && this.props.onPressItem(id)}
-            style={{
-              padding: 5,
-              borderColor: 'black',
-              borderWidth: 1,
-            }}>
-            <Text>{content}</Text>
-          </TouchableOpacity>
-))}
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
-    backgroundColor: '#ecf0f1',
-  },
-});*/
 
 import HomeScreen from './app/HomeScreen';
 import StartScreen from './app/StartScreen';
 import LessonScreen from './app/LessonScreen';
+import PracticeScreen from './app/PracticeScreen';
 import ActivityScreen from './app/ActivityScreen'
 import QuestionScreen from './app/QuestionScreen';
 import ScoreScreen from './app/ScoreScreen';
@@ -76,17 +15,97 @@ export const SimpleApp = StackNavigator({
   Home: { screen: HomeScreen },
   Start: { screen: StartScreen },
   Lesson: { screen: LessonScreen },
+  Practice: { screen: PracticeScreen },
   Activity: { screen: ActivityScreen },
   Question: { screen: QuestionScreen },
   Score: { screen: ScoreScreen },
   About: { screen: AboutScreen },
 });
 
-export default class App extends React.Component {
+export default class App extends Component {
+  componentWillMount(){
+    let lessons = 
+      [
+        {
+        name: 'Adding & Subtracting Radicals',
+        content:
+          [
+            {
+            text: 'Just as with regular numbers, square roots can be added together. But you might not be able to simplify the addition all the way down to one number. Just as you can\'t add apples and oranges, so also you cannot combine unlike radical terms. In order to be able to combine radical terms together, those terms have to have the same radical part.',
+            image: ''
+            },
+            {
+            text: 'Since the radical is the same in each term (being the square root of three), then these are like terms. This means that I can combine the terms.\n\nI have two copies of the radical, added to another three copies. This gives mea total of five copies:',
+            image: require('./assets/lesson1/a.png')
+            },
+            {
+            text: 'That middle step, with the parentheses, shows the reasoning that justifies the final answer. You probably won\'t ever need to show this step, but it\'s what should be going through your mind.',
+            image: ''
+            },
+            {
+            text: 'The radical part is the same in each term, so I can do this addition. To help me keep track that the first term means one copy of the square root of three, I\'ll insert the understood 1:',
+            image: require('./assets/lesson1/b.png')
+            },
+            {
+            text: 'Don\'t assume that expressions with unlike radicals cannot be simplified. It is possible that, after simplifying the radicals, the expression can indeed be simplified.',
+            image: ''
+            },
+            {
+            text: 'To simplify a radical addition, I must first see if I can simplify each radical term. In this particular case, the square roots simplify completely (that is, down to whole numbers):',
+            image: require('./assets/lesson1/c.png')
+            },
+            {
+            text: 'I have three copies of the radical, plus another two copies, giving me— Wait a minute! I can simplify those radicals right down to whole numbers:',
+            image: require('./assets/lesson1/d.png')
+            },
+            {
+            text: 'Don\'t worry if you don\'t see a simplification right away. If I hadn\'t noticed until the end that the radical simplified, my steps would have been different, but my final answer would have been the same:',
+            image: require('./assets/lesson1/e.png')
+            }
+          ]
+        }
+      ];
+    AsyncStorage.setItem('lessons', JSON.stringify(lessons));
+    let practices = 
+      [
+        [
+          {
+          text: 'Simplify:',
+          image: require('./assets/practice1/a1.png'),
+	  answer: require('./assets/practice1/a2.png')
+          },
+	  {
+          text: 'Simplify:',
+          image: require('./assets/practice1/b1.png'),
+          answer: require('./assets/practice1/b2.png')
+          },
+	  {
+          text: 'Simplify:',
+          image: require('./assets/practice1/c1.png'),
+          answer: require('./assets/practice1/c2.png')
+          },
+	  {
+          text: 'Simplify:',
+          image: require('./assets/practice1/d1.png'),
+          answer: require('./assets/practice1/d2.png')
+          },
+	  {
+          text: 'Simplify:',
+          image: require('./assets/practice1/e1.png'),
+          answer: require('./assets/practice1/e2.png')
+          },
+	  {
+          text: 'Simplify:',
+          image: require('./assets/practice1/f1.png'),
+          answer: require('./assets/practice1/f2.png')
+          }
+        ]
+      ];
+    AsyncStorage.setItem('practices', JSON.stringify(practices));
+  }
   render() {
+    console.disableYellowBox = true;
     return <SimpleApp />;
   }
 }
-
-
 
