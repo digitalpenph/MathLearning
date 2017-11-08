@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { TouchableHighlight, ScrollView, Text, StyleSheet, StatusBar, View, AsyncStorage, Image } from 'react-native';
 
-export default class LessonScreen extends Component {
+export default class TopicScreen extends Component {
   static navigationOptions = {
-    title: 'Lesson',
+    title: 'Topic',
     headerStyle: { backgroundColor: '#006A40' },
     headerTitleStyle: { color: '#FFFFFF' },
   };

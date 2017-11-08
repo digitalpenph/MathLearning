@@ -3,22 +3,24 @@ import { AsyncStorage } from 'react-native';
 import { StackNavigator } from 'react-navigation'; // 1.0.0-beta.13
 
 import HomeScreen from './app/HomeScreen';
-import StartScreen from './app/StartScreen';
-import LessonScreen from './app/LessonScreen';
+import ReviewScreen from './app/ReviewScreen';
+import TopicScreen from './app/TopicScreen';
 import PracticeScreen from './app/PracticeScreen';
-import ActivityScreen from './app/ActivityScreen'
+import QuizScreen from './app/QuizScreen'
 import QuestionScreen from './app/QuestionScreen';
-import ScoreScreen from './app/ScoreScreen';
+import FormulaScreen from './app/FormulaScreen';
+import DictionaryScreen from './app/DictionaryScreen';
 import AboutScreen from './app/AboutScreen';
 
 export const SimpleApp = StackNavigator({
   Home: { screen: HomeScreen },
-  Start: { screen: StartScreen },
-  Lesson: { screen: LessonScreen },
+  Review: { screen: ReviewScreen },
+  Topic: { screen: TopicScreen },
   Practice: { screen: PracticeScreen },
-  Activity: { screen: ActivityScreen },
+  Quiz: { screen: QuizScreen },
   Question: { screen: QuestionScreen },
-  Score: { screen: ScoreScreen },
+  Formula: { screen: FormulaScreen },
+  Dictionary: { screen: DictionaryScreen },
   About: { screen: AboutScreen },
 });
 
@@ -102,6 +104,34 @@ export default class App extends Component {
         ]
       ];
     AsyncStorage.setItem('practices', JSON.stringify(practices));
+    let formulas = 
+      [
+        {
+        text: 'Powers',
+        image: require('./assets/formulas/a.png'),
+        },
+        {
+        text: 'Logarithms',
+        image: require('./assets/formulas/b.png'),
+        }
+      ];
+    AsyncStorage.setItem('formulas', JSON.stringify(formulas));
+    let dictionaries = 
+      [
+        {
+        name: 'Radical Degree',
+        desc: 'The number of times the radicand is multiplied by itself. 2 means square root, 3 means cube root. After that they are called the 4th root, 5th root and so on. If this is missing, it is assumed to be 2 - the square root.'
+        },
+        {
+        name: 'Radical Symbol',
+        desc: 'The √ symbol that means root of. The length of the horizontal bar is important. See note below.',
+        },
+  	{
+        name: 'Radicand',
+        desc: 'The thing you are finding the root of.'
+        }
+      ];
+    AsyncStorage.setItem('dictionaries', JSON.stringify(dictionaries));
   }
   render() {
     console.disableYellowBox = true;

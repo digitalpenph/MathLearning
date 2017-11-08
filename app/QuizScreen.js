@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, TouchableHighlight, View, StatusBar } from 'react-native';
 
-export default class ActivityScreen extends Component {
+export default class QuizScreen extends Component {
   static navigationOptions = {
     title: 'Choose Dificulty',
     headerStyle: { backgroundColor: '#006A40' },
