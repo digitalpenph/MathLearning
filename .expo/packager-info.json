@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 7900,
-  "expoServerNgrokUrl": "https://i4-ksz.traci12.mathlearning.exp.direct",
-  "packagerNgrokUrl": "https://packager.i4-ksz.traci12.mathlearning.exp.direct",
-  "ngrokPid": 7962
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
